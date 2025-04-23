@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Comparador de Distâncias</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">
+          <img src="https://img.freepik.com/premium-vector/black-white-logo-with-letter-c-it_853558-967.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+            Comparador de Distâncias
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(página atual)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Ajuda</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">Como Funciona</a>
+              </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container-fluid content">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="list-group ul-list men">
+                    <li class="list-group-item bg-primary menu"><i class="fa-solid fa-user-gear" style="color: #ffffff;"></i></i> Comparar</li>
+                    <form id="form-busca" action="http://localhost:8080/api/busca/duplo" method="GET">
+                      <label for="algoritmo">Escolha o algoritmo de busca:</label>
+                      <select id="algoritmo" name="algoritmo" class="form-control">
+                        <option value="largura">Busca em Largura</option>
+                        <option value="profundidade">Busca em Profundidade</option>
+                        <option value="uniforme">Custo Uniforme</option>
+                        <option value="gulosa">Busca Gulosa</option>
+                        <option value="a">A*</option>
+                      </select>
+                    
+                      <label for="origem">Partida:</label>
+                      <select id="origem" name="origem" class="form-control">
+                        <option value="Aracaju">Aracaju</option>
+                        <option value="Belém">Belém</option>
+                        <option value="Belo Horizonte">Belo Horizonte</option>
+                        <option value="Boa Vista">Boa Vista</option>
+                        <option value="Brasília">Brasília</option>
+                        <option value="Campo Grande">Campo Grande</option>
+                        <option value="Cuiabá">Cuiabá</option>
+                        <option value="Curitiba">Curitiba</option>
+                        <option value="Espirito Santo">Espirito Santo</option>
+                        <option value="Florianapolis">Florianapolis</option>
+                        <option value="Fortaleza">Fortaleza</option>
+                        <option value="Goiânia">Goiânia</option>
+                        <option value="João Pessoa">João Pessoa</option>
+                        <option value="Macapá">Macapá</option>
+                        <option value="Maceió">Maceió</option>
+                        <option value="Manaus">Manaus</option>
+                        <option value="Natal">Natal</option>
+                        <option value="Palmas">Palmas</option>
+                        <option value="Porto Alegre">Porto Alegre</option>
+                        <option value="Porto Velho">Porto Velho</option>
+                        <option value="Recife">Recife</option>
+                        <option value="Rio Branco">Rio Branco</option>
+                        <option value="Rio de Janeiro">Rio de Janeiro</option>
+                        <option value="Salvador">Salvador</option>
+                        <option value="São Luís">São Luís</option>
+                        <option value="São Paulo">São Paulo</option>
+                        <option value="Teresina">Teresina</option>
+                      </select>
+                    
+                      <label for="destino">Destino:</label>
+                      <select id="destino" name="destino" class="form-control">
+                        <option value="Aracaju">Aracaju</option>
+                        <option value="Belém">Belém</option>
+                        <option value="Belo Horizonte">Belo Horizonte</option>
+                        <option value="Boa Vista">Boa Vista</option>
+                        <option value="Brasília">Brasília</option>
+                        <option value="Campo Grande">Campo Grande</option>
+                        <option value="Cuiabá">Cuiabá</option>
+                        <option value="Curitiba">Curitiba</option>
+                        <option value="Espirito Santo">Espirito Santo</option>
+                        <option value="Florianapolis">Florianapolis</option>
+                        <option value="Fortaleza">Fortaleza</option>
+                        <option value="Goiânia">Goiânia</option>
+                        <option value="João Pessoa">João Pessoa</option>
+                        <option value="Macapá">Macapá</option>
+                        <option value="Maceió">Maceió</option>
+                        <option value="Manaus">Manaus</option>
+                        <option value="Natal">Natal</option>
+                        <option value="Palmas">Palmas</option>
+                        <option value="Porto Alegre">Porto Alegre</option>
+                        <option value="Porto Velho">Porto Velho</option>
+                        <option value="Recife">Recife</option>
+                        <option value="Rio Branco">Rio Branco</option>
+                        <option value="Rio de Janeiro">Rio de Janeiro</option>
+                        <option value="Salvador">Salvador</option>
+                        <option value="São Luís">São Luís</option>
+                        <option value="São Paulo">São Paulo</option>
+                        <option value="Teresina">Teresina</option>
+                      </select>
+
+                      <button type="submit" class="btn btn-primary mt-3">
+                        <i class="fa-solid fa-magnifying-glass"></i> BUSCAR
+                      </button>
+                    </form>
+                </ul>
+            </div>
+            
+            <div class="col-md-9">
+                <div class="txt-about">
+                    <img src="img/mapa-brasil-estados-capitais.jpg" alt="mapa">
+            
+                </div>
+                
+            </div>
+        </div>
+</body>
+</html>
