@@ -3,7 +3,6 @@ package com.example.ComparadorDeBusca.service;
 import com.example.ComparadorDeBusca.model.Node;
 import com.example.ComparadorDeBusca.model.ResultadoBusca;
 
-
 import java.util.*;
 
 public class BuscaGulosa {
@@ -13,11 +12,16 @@ public class BuscaGulosa {
         fila.add(new Node(origem, List.of(origem), 0));
         Set<String> visitados = new HashSet<>();
 
+        int nosExpandidos = 0; // <<<<<< Adicionado
+
         while (!fila.isEmpty()) {
             Node atual = fila.poll();
+            nosExpandidos++; // <<<<<< Incrementa a cada expansão
 
             if (atual.nome.equals(destino)) {
-                return new ResultadoBusca(atual.caminho, atual.custo);
+                ResultadoBusca resultado = new ResultadoBusca(atual.caminho, atual.custo);
+                resultado.setNosExpandidos(nosExpandidos); // <<<<<< Salva no resultado
+                return resultado;
             }
 
             if (!visitados.contains(atual.nome)) {
@@ -33,6 +37,8 @@ public class BuscaGulosa {
             }
         }
 
-        return new ResultadoBusca(List.of(), 0); 
+        ResultadoBusca resultado = new ResultadoBusca(List.of(), 0);
+        resultado.setNosExpandidos(nosExpandidos); // <<<<<< Também salva se não encontrar caminho
+        return resultado;
     }
 }

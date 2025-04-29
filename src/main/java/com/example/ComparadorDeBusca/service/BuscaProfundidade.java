@@ -11,14 +11,20 @@ public class BuscaProfundidade {
         Set<String> visitados = new HashSet<>();
         pilha.push(new NoBusca(List.of(origem), 0));
 
+        int nosExpandidos = 0; // <<<<<< Adicionado
+
         while (!pilha.isEmpty()) {
             NoBusca noAtual = pilha.pop();
+            nosExpandidos++; // <<<<<< Incrementa a cada expansão
+
             List<String> caminho = noAtual.caminho;
             int custo = noAtual.custo;
             String atual = caminho.get(caminho.size() - 1);
 
             if (atual.equals(destino)) {
-                return new ResultadoBusca(caminho, custo);
+                ResultadoBusca resultado = new ResultadoBusca(caminho, custo);
+                resultado.setNosExpandidos(nosExpandidos); // <<<<<< Salva no ResultadoBusca
+                return resultado;
             }
 
             if (!visitados.contains(atual)) {
@@ -33,7 +39,9 @@ public class BuscaProfundidade {
             }
         }
 
-        return new ResultadoBusca(List.of(), 0); 
+        ResultadoBusca resultado = new ResultadoBusca(List.of(), 0);
+        resultado.setNosExpandidos(nosExpandidos); // <<<<<< Também no caminho sem sucesso
+        return resultado;
     }
 
     private static class NoBusca {

@@ -1,4 +1,5 @@
 package com.example.ComparadorDeBusca.service;
+
 import com.example.ComparadorDeBusca.model.ResultadoBusca;
 
 import java.util.*;
@@ -10,14 +11,20 @@ public class BuscaLargura {
         Set<String> visitados = new HashSet<>();
         fila.add(new NoBusca(List.of(origem), 0));
 
+        int nosExpandidos = 0; // <<<<<< Adicionado
+
         while (!fila.isEmpty()) {
             NoBusca noAtual = fila.poll();
+            nosExpandidos++; // <<<<<< Incrementa a cada expansão
+
             List<String> caminho = noAtual.caminho;
             int custo = noAtual.custo;
             String atual = caminho.get(caminho.size() - 1);
 
             if (atual.equals(destino)) {
-                return new ResultadoBusca(caminho, custo);
+                ResultadoBusca resultado = new ResultadoBusca(caminho, custo);
+                resultado.setNosExpandidos(nosExpandidos); // <<<<<< Salva no ResultadoBusca
+                return resultado;
             }
 
             if (!visitados.contains(atual)) {
@@ -32,7 +39,9 @@ public class BuscaLargura {
             }
         }
 
-        return new ResultadoBusca(List.of(), 0); 
+        ResultadoBusca resultado = new ResultadoBusca(List.of(), 0);
+        resultado.setNosExpandidos(nosExpandidos); // <<<<<< Mesmo que não encontre o destino
+        return resultado;
     }
 
     private static class NoBusca {

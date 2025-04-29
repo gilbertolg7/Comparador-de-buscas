@@ -16,6 +16,7 @@
             <p>Rodoviário:</p>
             <p>Caminho Rodoviário: <span th:text="${#strings.listJoin(rodoviario.caminho, ' → ')}"></span></p>
             <p>Distância Rodoviário: <span th:text="${rodoviario.custoTotal}"></span>km</p>
+            <p>Nós Expandidos Aéreo: <span th:text="${rodoviario.nosExpandidos}"></span></p>
             
         </div>
     </div>
@@ -25,6 +26,7 @@
             <p>Aéreo:</p>
             <p>Caminho Aéreo: <span th:text="${#strings.listJoin(aereo.caminho, ' → ')}"></span></p>
             <p>Distância Aéreo: <span th:text="${aereo.custoTotal}"></span>km</p>
+            <p>Nós Expandidos Aéreo: <span th:text="${aereo.nosExpandidos}"></span></p>
         </div>
     </div>
 
